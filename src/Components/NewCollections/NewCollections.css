@@ -4,6 +4,7 @@
     align-items: center;
     gap: 10px;
     margin-bottom: 100px;
+    background: linear-gradient(180deg, #121543, #00000022 250%);
 }
 
 .new-collection h1{

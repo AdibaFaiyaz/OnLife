@@ -1,10 +1,11 @@
 .shop-category{
     display: block;
-    margin: 20px 10px;
+    /* margin: 20px 10px; */
     width: 100%;
+    background: linear-gradient(180deg, #121543, #00000022 250%);
 }
 #banner{
-    width: 100vw;
+    width: 98vw;
 }
 .shopcategory-indexSort{
     display: flex;
