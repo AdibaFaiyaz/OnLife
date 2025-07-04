@@ -1,89 +1,254 @@
-.navbar{
-    display: flex;
-    justify-content: space-around;
-    padding: 16px;
-    box-shadow: 0 1px 3px -2px black;
-    background-color: #2d2d44;
-    color: #f3f3f3;
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
 }
 
-.nav-logo{
+.navbar-scrolled {
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: var(--shadow-lg);
+}
+
+.navbar-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+}
+
+.nav-logo {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
+    z-index: 1001;
 }
 
-.nav-logo p{
-    color: #d3c8c8;
-    font-size: 38px;
-    font-weight: 600;;
+.nav-logo img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
 }
 
-.nav-menu{
+.nav-logo p {
+    color: var(--text-primary);
+    font-size: 28px;
+    font-weight: 800;
+    margin: 0;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.nav-menu {
     display: flex;
     align-items: center;
     list-style: none;
-    gap: 50px;
-    color: #dfd8d8;
-    font-size: 20px;
-    font-weight: 500;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
 }
 
-.nav-menu ul{
-    color: #f3f3f3;
+.nav-menu li {
+    position: relative;
 }
 
-.nav-menu li{
+.nav-link {
     display: flex;
-    flex-direction:column;
+    flex-direction: column;
     align-items: center;
-    justify-self: center;
-    gap: 3px;
-    cursor: pointer;
-    color: #f3f3f3;
+    text-decoration: none;
+    color: var(--text-primary);
+    font-weight: 500;
+    font-size: 16px;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    position: relative;
 }
 
-.nav-menu hr{
-    border: none;
-    width: 80%;
+.nav-link:hover {
+    color: var(--primary-color);
+    background: rgba(37, 99, 235, 0.1);
+}
+
+.nav-indicator {
+    width: 30px;
     height: 3px;
-    border-radius: 10px;
-    background: #de3a3a ;
+    background: var(--gradient-primary);
+    border-radius: 2px;
+    margin-top: 4px;
+    animation: scaleIn 0.3s ease;
 }
 
-.nav-login-cart{
+.nav-login-cart {
     display: flex;
     align-items: center;
-    gap: 45px;
+    gap: 1.5rem;
+    z-index: 1001;
 }
 
-.nav-login-cart button{
-    width: 157px;
-    height: 58px;
-    outline: none;
-    border: 1px solid #7a7a7a;
-    border-radius: 75px;
-    color: #a19c9c;
-    font-size: 20px;
-    font-weight: 500;
-    background: rgb(30, 30, 30);
-    cursor: pointer;
+.nav-login-btn {
+    text-decoration: none;
 }
 
-.nav-login-cart button:active{
-    background: #f3f3f3;
-}
-
-.nav-cart-count{
-    width: 22px;
-    height: 22px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: -35px;
-    margin-left: -55px;
-    border-radius: 11px;
-    font-size: 14px;
-    background: rgb(248, 74, 74);
+.login-btn {
+    background: var(--gradient-primary);
     color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-md);
+}
+
+.login-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.nav-cart-link {
+    text-decoration: none;
+}
+
+.cart-icon-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    border-radius: 50%;
+    background: rgba(37, 99, 235, 0.1);
+    transition: all 0.3s ease;
+}
+
+.cart-icon-container:hover {
+    background: rgba(37, 99, 235, 0.2);
+    transform: scale(1.1);
+}
+
+.cart-icon-container img {
+    width: 24px;
+    height: 24px;
+    filter: brightness(0) saturate(100%) invert(27%) sepia(51%) saturate(2878%) hue-rotate(222deg) brightness(97%) contrast(89%);
+}
+
+.nav-cart-count {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: var(--gradient-secondary);
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+    border: 2px solid white;
+    box-shadow: var(--shadow-sm);
+}
+
+/* Mobile Menu Toggle */
+.mobile-menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.mobile-menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background: var(--text-primary);
+    margin: 3px 0;
+    transition: 0.3s;
+    border-radius: 2px;
+}
+
+.mobile-menu-toggle.active span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.mobile-menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-toggle.active span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar-container {
+        padding: 1rem;
+    }
+    
+    .nav-logo p {
+        font-size: 24px;
+    }
+    
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100vh;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        justify-content: center;
+        gap: 2rem;
+        transition: left 0.3s ease;
+    }
+    
+    .nav-menu-open {
+        left: 0;
+    }
+    
+    .nav-link {
+        font-size: 20px;
+        padding: 1rem 2rem;
+    }
+    
+    .mobile-menu-toggle {
+        display: flex;
+    }
+    
+    .nav-login-cart {
+        gap: 1rem;
+    }
+    
+    .login-btn {
+        padding: 0.5rem 1rem;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar-container {
+        padding: 0.75rem;
+    }
+    
+    .nav-logo p {
+        font-size: 20px;
+    }
+    
+    .nav-login-cart {
+        gap: 0.75rem;
+    }
 }

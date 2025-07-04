@@ -1,35 +1,185 @@
-.new-collection{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 100px;
-    background: linear-gradient(180deg, #121543, #00000022 250%);
+.new-collection {
+    padding: 5rem 0;
+    background: var(--bg-primary);
+    position: relative;
+    overflow: hidden;
 }
 
-.new-collection h1{
-    color: #171717;
-    font-size: 50px;
-    font-weight: 600;
+.new-collection::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.05) 0%, rgba(245, 158, 11, 0.05) 100%);
+    pointer-events: none;
 }
 
-.new-collection hr{
-    width: 200px;
-    height: 6px;
-    border-radius: 10px;
-    background: #252525;
+.new-collection-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 1;
 }
 
-.new-collection-item{
-    margin-top: 50px;
-    display: flex;
-    gap: 30px;
+.new-collection-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    animation: fadeIn 0.8s ease-out;
 }
 
-.collections{
+.new-collection-header h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    color: var(--text-primary);
+    margin: 0 0 1rem 0;
+    background: linear-gradient(135deg, #10b981 0%, #f59e0b 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.new-collection-header p {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin: 0 0 2rem 0;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.new-collection-underline {
+    width: 120px;
+    height: 4px;
+    background: linear-gradient(135deg, #10b981 0%, #f59e0b 100%);
+    border-radius: 2px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.new-collection-underline::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 8px;
+    height: 8px;
+    background: var(--accent-color);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.collections-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    margin-top: 50px;
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+    justify-items: center;
+}
+
+.new-collection-cta {
+    display: flex;
+    justify-content: center;
+    animation: fadeIn 0.8s ease-out 0.3s both;
+}
+
+.explore-all-btn {
+    background: linear-gradient(135deg, #10b981 0%, #f59e0b 100%);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    overflow: hidden;
+}
+
+.explore-all-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s ease;
+}
+
+.explore-all-btn:hover::before {
+    left: 100%;
+}
+
+.explore-all-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-xl);
+}
+
+.explore-all-btn svg {
+    transition: transform 0.3s ease;
+}
+
+.explore-all-btn:hover svg {
+    transform: translateX(5px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .new-collection {
+        padding: 3rem 0;
+    }
+    
+    .new-collection-container {
+        padding: 0 1rem;
+    }
+    
+    .new-collection-header {
+        margin-bottom: 2.5rem;
+    }
+    
+    .new-collection-header h2 {
+        font-size: clamp(1.5rem, 6vw, 2.5rem);
+    }
+    
+    .new-collection-header p {
+        font-size: 1rem;
+    }
+    
+    .collections-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .explore-all-btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .new-collection {
+        padding: 2rem 0;
+    }
+    
+    .new-collection-container {
+        padding: 0 1rem;
+    }
+    
+    .collections-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .new-collection-header {
+        margin-bottom: 2rem;
+    }
 }
 

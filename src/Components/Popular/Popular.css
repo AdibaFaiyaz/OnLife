@@ -1,28 +1,185 @@
-.popular{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    height: 90vh;
-    background: linear-gradient(180deg, #121543, #00000022 250%);
+.popular {
+    padding: 5rem 0;
+    background: var(--bg-secondary);
+    position: relative;
+    overflow: hidden;
 }
 
-.popular h1{
-    color: #bbb7b7;
-    font-size: 50px;
+.popular::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.05) 0%, rgba(168, 85, 247, 0.05) 100%);
+    pointer-events: none;
+}
+
+.popular-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.popular-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    animation: fadeIn 0.8s ease-out;
+}
+
+.popular-header h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    color: var(--text-primary);
+    margin: 0 0 1rem 0;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.popular-header p {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin: 0 0 2rem 0;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.popular-underline {
+    width: 100px;
+    height: 4px;
+    background: var(--gradient-primary);
+    border-radius: 2px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.popular-underline::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 8px;
+    height: 8px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.popular-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+    justify-items: center;
+}
+
+.popular-cta {
+    display: flex;
+    justify-content: center;
+    animation: fadeIn 0.8s ease-out 0.3s both;
+}
+
+.view-all-btn {
+    background: var(--gradient-primary);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-size: 1.1rem;
     font-weight: 600;
-}
-
-.popular hr{
-    width: 200px;
-    height: 6px;
-    border-radius: 10px;
-    background: #d9d9d9;
-}
-
-.popular-item{
-    margin-top: 50px;
+    cursor: pointer;
     display: flex;
-    gap: 30px;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    overflow: hidden;
+}
+
+.view-all-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s ease;
+}
+
+.view-all-btn:hover::before {
+    left: 100%;
+}
+
+.view-all-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-xl);
+}
+
+.view-all-btn svg {
+    transition: transform 0.3s ease;
+}
+
+.view-all-btn:hover svg {
+    transform: translateX(5px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .popular {
+        padding: 3rem 0;
+    }
+    
+    .popular-container {
+        padding: 0 1rem;
+    }
+    
+    .popular-header {
+        margin-bottom: 2.5rem;
+    }
+    
+    .popular-header h2 {
+        font-size: clamp(1.5rem, 6vw, 2.5rem);
+    }
+    
+    .popular-header p {
+        font-size: 1rem;
+    }
+    
+    .popular-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .view-all-btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .popular {
+        padding: 2rem 0;
+    }
+    
+    .popular-container {
+        padding: 0 1rem;
+    }
+    
+    .popular-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .popular-header {
+        margin-bottom: 2rem;
+    }
 }
 
